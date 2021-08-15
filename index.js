@@ -4,6 +4,7 @@ for (let i = 0; i < drum.length; i++) {
   drum[i].addEventListener("click", () => {
     let btnText = drum[i].textContent;
     playMusic(btnText)
+    animation(btnText)
   });
 }
 
@@ -11,6 +12,7 @@ for (let i = 0; i < drum.length; i++) {
 document.addEventListener('keypress', (e)=> {
    let keytext = e.key
    playMusic(keytext)
+   animation(keytext)
 })
 
 function playMusic(key) {
@@ -48,3 +50,13 @@ function playMusic(key) {
             console.log(btnText);
           break;
 }}
+
+
+function animation(key) {
+  const pressed = document.querySelector(`.${key}`)
+  pressed.classList.add('pressed')
+
+  setTimeout(()=> {
+    pressed.classList.remove('pressed')
+  }, 100)
+} 
